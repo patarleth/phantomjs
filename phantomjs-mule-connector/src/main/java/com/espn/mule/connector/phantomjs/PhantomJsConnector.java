@@ -15,6 +15,8 @@ import org.mule.api.annotations.Processor;
 
 import com.espn.phantomjs.PhantomJs;
 import com.espn.phantomjs.client.*;
+import org.mule.api.annotations.param.Default;
+import org.mule.api.annotations.param.Optional;
 
 /**
  * Cloud Connector
@@ -24,8 +26,29 @@ import com.espn.phantomjs.client.*;
 @Connector(name="phantomjs", schemaVersion="1.0-SNAPSHOT")
 public class PhantomJsConnector
 {
-    private PhantomJs phantomJsClient = new PhantomJs(new PhantomJsWebDriverClient("/usr/local/bin/phantomjs", 60));
+    private PhantomJs phantomJsClient = null;
 
+    private synchronized PhantomJs getPhantomJs() {
+        if (this.phantomJsClient == null) {
+            this.phantomJsClient = new PhantomJs(new PhantomJsWebDriverClient(getPhantomjsBinary(), 60));
+        }
+        return this.phantomJsClient;
+    }
+    
+    /**
+     * locaion of the phantomjs executable file
+     */
+    @Configurable @Optional @Default("/usr/local/bin/phantomjs")
+    String phantomjsBinary = "/usr/local/bin/phantomjs";
+
+    public String getPhantomjsBinary() {
+        return phantomjsBinary;
+    }
+
+    public void setPhantomjsBinary(String phantomjsBinary) {
+        this.phantomjsBinary = phantomjsBinary;
+    }    
+    
     /**
      * screenshot
      *
@@ -36,6 +59,6 @@ public class PhantomJsConnector
      */
     @Processor
     public byte[] screenshot( String url ) throws Exception {
-        return phantomJsClient.screenshot(url);
+        return getPhantomJs().screenshot(url);
     }
 }
