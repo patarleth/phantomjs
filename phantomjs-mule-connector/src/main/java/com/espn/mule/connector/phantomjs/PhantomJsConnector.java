@@ -26,19 +26,12 @@ import org.mule.api.annotations.param.Optional;
 @Connector(name="phantomjs", schemaVersion="1.0-SNAPSHOT")
 public class PhantomJsConnector
 {
-    private PhantomJs phantomJsClient = null;
-
-    private synchronized PhantomJs getPhantomJs() {
-        if (this.phantomJsClient == null) {
-            this.phantomJsClient = new PhantomJs(new PhantomJsWebDriverClient(getPhantomjsBinary(), 60));
-        }
-        return this.phantomJsClient;
-    }
-    
     /**
      * locaion of the phantomjs executable file
      */
-    @Configurable @Optional @Default("/usr/local/bin/phantomjs")
+    @Configurable
+    @Optional
+    @Default("/usr/local/bin/phantomjs")
     String phantomjsBinary = "/usr/local/bin/phantomjs";
 
     public String getPhantomjsBinary() {
@@ -47,7 +40,32 @@ public class PhantomJsConnector
 
     public void setPhantomjsBinary(String phantomjsBinary) {
         this.phantomjsBinary = phantomjsBinary;
-    }    
+    }
+    
+    /**
+     * default phantomjs timeout
+     */
+    @Configurable
+    @Optional
+    @Default("60")
+    int timeout = 60;
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
+    }
+
+    private PhantomJs phantomJsClient = null;
+
+    private synchronized PhantomJs getPhantomJs() {
+        if (this.phantomJsClient == null) {
+            this.phantomJsClient = new PhantomJs(new PhantomJsWebDriverClient(getPhantomjsBinary(), getTimeout()));
+        }
+        return this.phantomJsClient;
+    }
     
     /**
      * screenshot
