@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="bottomline">
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="screenshot">
     <global-element type="http://www.mulesoft.org/schema/mule/phantomjs/config" name="Phantomjs" entity-id="Phantomjs#1">
         <properties>
+            <property value="/usr/local/bin/phantomjs" name="phantomjsBinary"/>
             <property value="Phantomjs" name="name"/>
+            <property value="60" name="timeout"/>
             <property value="1" name="auxiliary;index"/>
+            <property name="updated"/>
         </properties>
+        <description></description>
     </global-element>
     <global-element type="http://www.springframework.org/schema/beans/bean" name="Bean" entity-id="Bean#1">
         <properties>
@@ -65,7 +69,7 @@
             </property-collection>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="springnoscriptscreenshot" entity-id="2e6ea4cc-e21a-498a-8f96-69c783994475">
+    <flow SubFlow="false" name="springnoscriptscreenshot" entity-id="3224816e-cd3e-4da4-a7b2-28c878527452">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -93,7 +97,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="springbeanscreenshot" entity-id="d843e1d3-1e1f-4508-8619-122936c76552">
+    <flow SubFlow="false" name="springbeanscreenshot" entity-id="a689f66a-aaa4-493d-ae68-62631009da64">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -136,7 +140,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="javascriptscreenshot" entity-id="eba0898a-0d40-4cb8-9795-153766e3f44e">
+    <flow SubFlow="false" name="javascriptscreenshot" entity-id="21675cda-ff1b-444c-adea-9a5365232c35">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -179,7 +183,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="cloudConnectorScreenshot" entity-id="47c88c82-1143-4068-ab90-c161fe5bc70a">
+    <flow SubFlow="false" name="cloudConnectorScreenshot" entity-id="133e8546-3bda-4acd-b386-1c103a3a9be3">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -209,7 +213,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="bottomlineFlow1" entity-id="d7d2925c-1941-4f4d-b902-5ae15c1ae075">
+    <flow SubFlow="false" name="bottomlineFlow1" entity-id="34eec808-ee55-4a29-bc8c-29f299ea7105">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -252,13 +256,13 @@
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="26" name=";INDEX"/>
-                    <property-collection name="7c743fe8-245f-4810-a691-b445289a8563">
+                    <property-collection name="24b8f2a8-c89e-4b18-b5a4-c2c676a0eecf">
                         <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="f5fc19cc-4753-4b39-a35f-d12168fb1c39">
+                    <property-collection name="d9427ffa-4a0a-4dcc-b6ee-928136c633cc">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
@@ -266,20 +270,20 @@
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
                     <properties>
                         <property value="26" name=";INDEX"/>
-                        <property-collection name="7c743fe8-245f-4810-a691-b445289a8563">
+                        <property-collection name="24b8f2a8-c89e-4b18-b5a4-c2c676a0eecf">
                             <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="expression"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="f5fc19cc-4753-4b39-a35f-d12168fb1c39">
+                        <property-collection name="d9427ffa-4a0a-4dcc-b6ee-928136c633cc">
                             <property value="true" name="choice.otherwise"/>
                             <property-collection name="choice.attributes"/>
                         </property-collection>
                     </properties>
                 </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="28" hadOnlyOneElement="false" entity-id="7c743fe8-245f-4810-a691-b445289a8563">
+                    <lane isChoiceOtherwiseLane="false" index="28" hadOnlyOneElement="false" entity-id="24b8f2a8-c89e-4b18-b5a4-c2c676a0eecf">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="SetUrlPayloadFromQueryString" entity-id="Set Payload#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -288,7 +292,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="30" hadOnlyOneElement="false" entity-id="f5fc19cc-4753-4b39-a35f-d12168fb1c39">
+                    <lane isChoiceOtherwiseLane="true" index="30" hadOnlyOneElement="false" entity-id="d9427ffa-4a0a-4dcc-b6ee-928136c633cc">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="setUrlPayload" entity-id="Set Payload#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -302,61 +306,59 @@
             <splitter index="31" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#3">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="false" name="tracking:enable-default-events"/>
-                    <property name="updated"/>
                     <property value="31" name=";INDEX"/>
-                    <property-collection name="1326aff7-31b7-4575-a71d-6a0a5bd2e312">
-                        <property value="true" name="choice.otherwise"/>
-                        <property value="" name="choice.expression"/>
-                        <property-collection name="choice.attributes"/>
-                    </property-collection>
-                    <property-collection name="63a4bbc1-9857-44f2-a23c-2f7bae462fe7">
+                    <property-collection name="8359532b-ee19-48f6-8c0e-43a58f0a8b84">
                         <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="9cfecaff-6766-4ede-ad33-594614557e10">
+                    <property-collection name="9708f93f-154f-412a-9dd2-53902eaa762e">
+                        <property value="true" name="choice.otherwise"/>
+                        <property-collection name="choice.attributes"/>
+                    </property-collection>
+                    <property-collection name="56f7ff14-fc7f-491f-82cd-f670545542d0">
                         <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="c617a8b0-05b5-40d1-9194-3a26f5d8d7f9">
+                    <property-collection name="7ddc2423-c513-48ce-9f94-0148acd0fcfb">
                         <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
+                        <property-collection name="choice.attributes">
+                            <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
+                        </property-collection>
                     </property-collection>
                 </properties>
-                <description></description>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#4">
                     <properties>
-                        <property value="false" name="tracking:enable-default-events"/>
-                        <property name="updated"/>
                         <property value="31" name=";INDEX"/>
-                        <property-collection name="1326aff7-31b7-4575-a71d-6a0a5bd2e312">
-                            <property value="true" name="choice.otherwise"/>
-                            <property value="" name="choice.expression"/>
-                            <property-collection name="choice.attributes"/>
-                        </property-collection>
-                        <property-collection name="63a4bbc1-9857-44f2-a23c-2f7bae462fe7">
+                        <property-collection name="8359532b-ee19-48f6-8c0e-43a58f0a8b84">
                             <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="9cfecaff-6766-4ede-ad33-594614557e10">
+                        <property-collection name="9708f93f-154f-412a-9dd2-53902eaa762e">
+                            <property value="true" name="choice.otherwise"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                        <property-collection name="56f7ff14-fc7f-491f-82cd-f670545542d0">
                             <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="expression"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="c617a8b0-05b5-40d1-9194-3a26f5d8d7f9">
+                        <property-collection name="7ddc2423-c513-48ce-9f94-0148acd0fcfb">
                             <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
+                            </property-collection>
                         </property-collection>
                     </properties>
-                    <description></description>
                 </pattern>
                 <compartment entity-id="compartment#2">
-                    <lane isChoiceOtherwiseLane="false" index="33" hadOnlyOneElement="false" entity-id="9cfecaff-6766-4ede-ad33-594614557e10">
+                    <lane isChoiceOtherwiseLane="false" index="33" hadOnlyOneElement="false" entity-id="56f7ff14-fc7f-491f-82cd-f670545542d0">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="js" entity-id="Flow Reference#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -365,39 +367,35 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="35" hadOnlyOneElement="false" entity-id="63a4bbc1-9857-44f2-a23c-2f7bae462fe7">
+                    <lane isChoiceOtherwiseLane="false" index="35" hadOnlyOneElement="false" entity-id="8359532b-ee19-48f6-8c0e-43a58f0a8b84">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="spring" entity-id="Flow Reference#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="springbeanscreenshot" name="name"/>
 <property value="35" name="auxiliary;index"/>
-<property name="updated"/>
                             </properties>
-                            <description></description>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="37" hadOnlyOneElement="false" entity-id="1326aff7-31b7-4575-a71d-6a0a5bd2e312">
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="cloudConnector" entity-id="Flow Reference#3">
+                    <lane isChoiceOtherwiseLane="false" index="37" hadOnlyOneElement="false" entity-id="7ddc2423-c513-48ce-9f94-0148acd0fcfb">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="springNoJs" entity-id="Flow Reference#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="cloudConnectorScreenshot" name="name"/>
+<property value="springnoscriptscreenshot" name="name"/>
 <property value="37" name="auxiliary;index"/>
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="c617a8b0-05b5-40d1-9194-3a26f5d8d7f9">
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="springNoJs" entity-id="bc753ddd-f387-41e8-bc9e-26efc27f39c9">
+                    <lane isChoiceOtherwiseLane="true" index="39" hadOnlyOneElement="false" entity-id="9708f93f-154f-412a-9dd2-53902eaa762e">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="cloudConnector" entity-id="Flow Reference#4">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="springnoscriptscreenshot" name="name"/>
-<property name="updated"/>
+<property value="cloudConnectorScreenshot" name="name"/>
+<property value="39" name="auxiliary;index"/>
                             </properties>
-                            <description></description>
                         </pattern>
                     </lane>
                 </compartment>
             </splitter>
         </lane>
     </flow>
-    <description></description>
 </mule-configuration>
