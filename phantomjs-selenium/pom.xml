@@ -1,0 +1,179 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // POM Relationships                                               -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <groupId>com.espn.phantomjs.client</groupId>
+  <artifactId>phantomjs-client</artifactId>
+  <version>local-SNAPSHOT</version>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Project Information                                             -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <name>Phantomjs WebDriver Client</name>
+  <description>
+    Phantomjs test client
+  </description>
+  <inceptionYear>2013</inceptionYear>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Project Developers                                              -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <developers>
+    <developer>
+      <id>arlethp</id>
+      <name>pat arleth</name>
+      <roles>
+        <role>Code Monkey</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Build Settings                                                  -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <packaging>jar</packaging>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Source Control Settings                                         -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <properties>
+  </properties>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Plugin Settings                                                 -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <ejbVersion>3.0</ejbVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
+    </plugins>
+  </build>
+
+  <!-- ////////////////////////////////////////////////////////////////// -->
+  <!-- // Project Dependencies                                            -->
+  <!-- ////////////////////////////////////////////////////////////////// -->
+
+  <profiles>
+    <!-- If maven is run with JDK 6, configure various plugins for JDK 6 support-->
+    <profile>
+      <id>jdk-1.7</id>
+      <activation>
+        <jdk>1.7</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.6</source>
+              <target>1.6</target>
+            </configuration>
+            <inherited>true</inherited>
+          </plugin>
+          <plugin>
+            <artifactId>maven-idea-plugin</artifactId>
+            <configuration>
+              <jdkName>1.6</jdkName>
+              <jdkLevel>1.6</jdkLevel>
+            </configuration>
+            <inherited>true</inherited>
+          </plugin>             
+        </plugins>
+      </build>
+      <reporting>
+        <plugins>
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.5</version>
+            <reportSets>
+              <reportSet>
+                <id>sunlink</id>
+                <reports>
+                  <report>javadoc</report>
+                </reports>
+                <inherited>true</inherited>
+                <configuration>
+                  <!--links>
+                      <link>http://java.sun.com/javase/6/docs/api/</link>
+                      </links-->
+                </configuration>
+              </reportSet>
+            </reportSets>
+          </plugin>
+        </plugins>
+      </reporting>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>maven</id>
+      <name>maven.org Repository</name>
+      <url>http://repo1.maven.org/maven2/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.detro.ghostdriver</groupId>
+      <artifactId>phantomjsdriver</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>com.espn.mule.devkit</groupId>
+      <artifactId>devkit-assist</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    -->
+  </dependencies>
+</project>

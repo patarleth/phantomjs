@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(phantomjs:screenshot) -->
+    <phantomjs:screenshot url="#[map-payload:url]" />
+<!-- END_INCLUDE(phantomjs:screenshot) -->
