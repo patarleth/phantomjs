@@ -4,14 +4,16 @@
 package com.espn.mule.connector.phantomjs;
 
 import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.Configurable;
+import org.mule.api.annotations.Processor;
+/*
 import org.mule.api.annotations.Connect;
 import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.ConnectionIdentifier;
 import org.mule.api.annotations.Disconnect;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.ConnectionException;
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.Processor;
+ */
 
 import com.espn.phantomjs.PhantomJs;
 import com.espn.phantomjs.client.*;
@@ -19,15 +21,16 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
- * Cloud Connector
+ * exposes phantomjs functions as mule processors
+ * http://phantomjs.org
  *
- * @author MuleSoft, Inc.
+ * @author arlethp1
  */
 @Connector(name="phantomjs", schemaVersion="1.0-SNAPSHOT")
 public class PhantomJsConnector
 {
     /**
-     * locaion of the phantomjs executable file
+     * location of the phantomjs executable file
      */
     @Configurable
     @Optional
@@ -68,11 +71,11 @@ public class PhantomJsConnector
     }
     
     /**
-     * screenshot
+     * screenshot takes screenshots of webpages
      *
      * {@sample.xml ../../../doc/PhantomJs-connector.xml.sample phantomjs:screenshot}
-     * @param url String
-     * @return image bytes
+     * @param url web address of the site you want to take a screenshot of
+     * @return png image bytes
      * @throws Exception for url
      */
     @Processor
