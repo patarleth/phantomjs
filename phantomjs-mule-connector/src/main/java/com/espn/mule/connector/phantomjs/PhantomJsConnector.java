@@ -35,7 +35,7 @@ public class PhantomJsConnector
     @Configurable
     @Optional
     @Default("/usr/local/bin/phantomjs")
-    String phantomjsBinary = "/usr/local/bin/phantomjs";
+    private String phantomjsBinary = "/usr/local/bin/phantomjs";
 
     public String getPhantomjsBinary() {
         return phantomjsBinary;
@@ -51,7 +51,7 @@ public class PhantomJsConnector
     @Configurable
     @Optional
     @Default("60")
-    int timeout = 60;
+    private int timeout = 60;
 
     public int getTimeout() {
         return timeout;

@@ -1,6 +1,7 @@
 package com.espn.phantomjs;
 
 import com.espn.phantomjs.client.PhantomJsCallable;
+import com.espn.phantomjs.client.PhantomJsWebDriverClient;
 import com.espn.phantomjs.client.PhantomJsWebDriverClientInterface;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -16,6 +17,10 @@ import org.openqa.selenium.WebDriver;
 public class PhantomJs {
 
     private PhantomJsWebDriverClientInterface client;
+
+    public PhantomJs(String phantomjsBinaryLocation, int timeout) {
+        this(new PhantomJsWebDriverClient(phantomjsBinaryLocation, timeout));
+    }
 
     public PhantomJs(PhantomJsWebDriverClientInterface client) {
         this.client = client;
