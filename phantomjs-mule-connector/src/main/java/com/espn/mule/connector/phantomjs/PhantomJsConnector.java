@@ -46,7 +46,8 @@ public class PhantomJsConnector
     }
     
     /**
-     * default phantomjs timeout
+     * default phantomjs request and response timeout
+     * defaults to 60 seconds
      */
     @Configurable
     @Optional
