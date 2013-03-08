@@ -21,7 +21,7 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
- * exposes phantomjs functions as mule processors
+ * exposes phantomjs as a mule processor 
  * http://phantomjs.org
  *
  * @author arlethp1
@@ -33,8 +33,7 @@ public class PhantomJsConnector
      * location of the phantomjs executable file
      */
     @Configurable
-    @Optional
-    @Default("/usr/local/bin/phantomjs")
+    @Optional @Default("/usr/local/bin/phantomjs")
     private String phantomjsBinary = "/usr/local/bin/phantomjs";
 
     public String getPhantomjsBinary() {
@@ -82,5 +81,19 @@ public class PhantomJsConnector
     @Processor
     public byte[] screenshot( String url ) throws Exception {
         return getPhantomJs().screenshot(url);
+    }
+
+    /**
+     * execute script on page load
+     *
+     * {@sample.xml ../../../doc/PhantomJs-connector.xml.sample phantomjs:execute-script}
+     * @param url web address of the site you want to run the script on
+     * @param scriptSrc javascript source code
+     * @return script result as string;
+     * @throws Exception for url
+     */
+    @Processor
+    public String executeScript( String url, String scriptSrc ) throws Exception {
+        return getPhantomJs().executeScript(url, scriptSrc, null);
     }
 }

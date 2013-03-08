@@ -22,29 +22,86 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class PhantomJsWebDriverTest {
 
     @Test
-    public void testClient() throws Exception {
-        //three threads, queue size = 100
-        PhantomJsWebDriverClientInterface client =
-                new PhantomJsWebDriverClient("/usr/local/bin/phantomjs", 60);
-        screenshot(client);
-    }
-
-    @Test
-    public void testConcurrentClient() throws Exception {
-        //three threads, queue size = 100, timeout 60 seconds
-        PhantomJsWebDriverClientInterface client =
-                new ConcurrentPhantomJsWebDriverClient("/usr/local/bin/phantomjs", 3, 100, 60);
-        screenshot(client);
-    }
-
-    @Test
-    public void testPhantomJs() throws Exception {
+    public void testExecJs() throws Exception {
         PhantomJsWebDriverClientInterface client =
                 new PhantomJsWebDriverClient("/usr/local/bin/phantomjs", 60);
         PhantomJs js = new PhantomJs(client);
-        byte[] bytes = js.screenshot("http://espn.go.com");
-        System.out.println("bytes.length " + bytes.length);
+        String script = "function() {\n"
+                + "\n"
+                + "        var imgs = $('#body img'), arr = [];\n"
+                + "        $.each(imgs, function(i, image) {\n"
+                + "            var src = $(this).attr('src'),\n"
+                + "            thumb = null, full = null,\n"
+                + "            href = $(this).parent('a').attr('href'),\n"
+                + "            type = null, year = null, team = null, guid = null;\n"
+                + "            \n"
+                + "            if (href && src) {\n"
+                + "                /* derive image sources */\n"
+                + "                if (src.indexOf('thumbs') > -1) {\n"
+                + "                    thumb = src;\n"
+                + "                    full = src.replace('thumbs', 'full');\n"
+                + "                }\n"
+                + "                \n"
+                + "                /* derive hierarchy */\n"
+                + "                var ontology = href;\n"
+                + "                if (ontology.charAt(ontology.length-1) == '/') {\n"
+                + "                    ontology = ontology.substring(0, ontology.length-1);\n"
+                + "                }\n"
+                + "                var parts = ontology.split('/');\n"
+                + "                if (parts.length == 6) {\n"
+                + "                    type = parts[parts.length-1];\n"
+                + "                    year = parts[parts.length-2];\n"
+                + "                    team = parts[parts.length-3];\n"
+                + "                    guid = parts[parts.length-4];\n"
+                + "                    \n"
+                + "                    var obj = { type: type, year: year, team: team, thumb: thumb, full: full, href: href };\n"
+                + "                    arr.push(obj);\n"
+                + "                }\n"
+                + "            }\n"
+                + "        });\n"
+                + "\n"
+                + "        var str = JSON.stringify(arr); \n"
+                + "        //console.log(str);\n"
+                + "        return str;\n"
+                + "    }();";
+        String msg;
+        script = "return 'hello';";
+
+        try {
+            msg = js.executeScript("http://www.sportslogos.net/logos/list_by_team/53/Boston_Red_Sox/", script, "disclaimer");
+        } catch (Exception eee) {
+            eee.printStackTrace();
+            throw eee;
+        }
+        //String msg = js.executeScript("http://espn.go.com", script);
+        System.out.println(msg);
     }
+    /*
+     @Test
+     public void testClient() throws Exception {
+     //three threads, queue size = 100
+     PhantomJsWebDriverClientInterface client =
+     new PhantomJsWebDriverClient("/usr/local/bin/phantomjs", 60);
+     screenshot(client);
+     }
+
+     @Test
+     public void testConcurrentClient() throws Exception {
+     //three threads, queue size = 100, timeout 60 seconds
+     PhantomJsWebDriverClientInterface client =
+     new ConcurrentPhantomJsWebDriverClient("/usr/local/bin/phantomjs", 3, 100, 60);
+     screenshot(client);
+     }
+
+     @Test
+     public void testPhantomJs() throws Exception {
+     PhantomJsWebDriverClientInterface client =
+     new PhantomJsWebDriverClient("/usr/local/bin/phantomjs", 60);
+     PhantomJs js = new PhantomJs(client);
+     byte[] bytes = js.screenshot("http://espn.go.com");
+     System.out.println("bytes.length " + bytes.length);
+     }
+     */
 
     private void screenshot(PhantomJsWebDriverClientInterface client) throws Exception {
         try {

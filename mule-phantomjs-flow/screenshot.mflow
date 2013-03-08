@@ -67,7 +67,7 @@
             </property-collection>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="springnoscriptscreenshot" entity-id="f0acf7ca-c5fd-4584-a88e-58f8992958dc">
+    <flow SubFlow="false" name="springnoscriptscreenshot" entity-id="d0731794-e7b0-4a3f-8889-6207bd10b260">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -95,7 +95,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="springbeanscreenshot" entity-id="c8d7cb1c-d1c7-4850-8a68-72d289ea1489">
+    <flow SubFlow="false" name="springbeanscreenshot" entity-id="b500fa55-1bf8-4f0b-881d-4339deb04485">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -122,13 +122,13 @@
                     <property name="encoding"/>
                     <property value="13" name="auxiliary;index"/>
                     <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="//#[registry.lookupObject('screenshotBean').screenshot(payload)]&#xA;var bean = registry.lookupObject(&quot;screenshotBean&quot;);&#xA;result = bean.screenshot(payload);" name="text"/>
                         <property value="JavaScript" name="engine"/>
                         <property value="14" name="auxiliary;wrapIn"/>
                         <property value="14" name="auxiliary;index"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property value="//#[registry.lookupObject('screenshotBean').screenshot(payload)]&#xA;var bean = registry.lookupObject(&quot;screenshotBean&quot;);&#xA;result = bean.screenshot(payload);" name="text"/>
                         <property value="JavaScript" name="engine"/>
                         <property value="14" name="auxiliary;wrapIn"/>
@@ -138,7 +138,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="javascriptscreenshot" entity-id="be127ce8-5e6c-458e-bcf2-584e9955e0aa">
+    <flow SubFlow="false" name="javascriptscreenshot" entity-id="eaa88549-733d-498c-aa26-4ccbb1d95943">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -165,13 +165,13 @@
                     <property name="encoding"/>
                     <property value="18" name="auxiliary;index"/>
                     <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property value="var url = payload;&#xA;var bytes = null;&#xA;var caps = new Packages.org.openqa.selenium.remote.DesiredCapabilities();&#xA;caps.setJavascriptEnabled(true);                //&lt; not really needed: JS enabled by default&#xA;caps.setCapability(&quot;takesScreenshot&quot;, true);    //&lt; yeah, GhostDriver haz screenshotz!&#xA;caps.setCapability(Packages.org.openqa.selenium.phantomjs.PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,&quot;/usr/local/bin/phantomjs&quot;);&#xA;&#xA;// Launch driver (will take care and ownership of the phantomjs process)&#xA;var driver = new Packages.org.openqa.selenium.phantomjs.PhantomJSDriver(caps);&#xA;var timeunit = java.util.concurrent.TimeUnit.MINUTES;&#xA;var timeouts = driver.manage().timeouts();&#xA;timeouts[&quot;pageLoadTimeout(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;timeouts[&quot;implicitlyWait(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;timeouts[&quot;setScriptTimeout(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;&#xA;try {&#xA;    // Load Google.com&#xA;    driver.get(url);&#xA;&#xA;    var screenshotTmpFile = driver.getScreenshotAs(Packages.org.openqa.selenium.OutputType.FILE);&#xA;&#xA;    var fis = new java.io.FileInputStream(screenshotTmpFile);&#xA;    try {&#xA;        var bis = new java.io.BufferedInputStream(fis);&#xA;        bytes = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, screenshotTmpFile.length());&#xA;&#xA;        for (var i = 0; i &lt; bytes.length; i++) {&#xA;           var b = new java.lang.Integer(bis.read());&#xA;           bytes[i] = b.byteValue();&#xA;        }&#xA;    } catch(e) {&#xA;        java.lang.System.out.println(e);&#xA;    } finally {&#xA;        fis.close();&#xA;    }&#xA;    java.lang.System.out.println(screenshotTmpFile + &quot; length &quot; + bytes.length);&#xA;} finally {&#xA;    driver.quit();&#xA;}&#xA;&#xA;result = bytes;" name="text"/>
                         <property value="JavaScript" name="engine"/>
                         <property value="19" name="auxiliary;wrapIn"/>
                         <property value="19" name="auxiliary;index"/>
                     </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property value="var url = payload;&#xA;var bytes = null;&#xA;var caps = new Packages.org.openqa.selenium.remote.DesiredCapabilities();&#xA;caps.setJavascriptEnabled(true);                //&lt; not really needed: JS enabled by default&#xA;caps.setCapability(&quot;takesScreenshot&quot;, true);    //&lt; yeah, GhostDriver haz screenshotz!&#xA;caps.setCapability(Packages.org.openqa.selenium.phantomjs.PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,&quot;/usr/local/bin/phantomjs&quot;);&#xA;&#xA;// Launch driver (will take care and ownership of the phantomjs process)&#xA;var driver = new Packages.org.openqa.selenium.phantomjs.PhantomJSDriver(caps);&#xA;var timeunit = java.util.concurrent.TimeUnit.MINUTES;&#xA;var timeouts = driver.manage().timeouts();&#xA;timeouts[&quot;pageLoadTimeout(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;timeouts[&quot;implicitlyWait(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;timeouts[&quot;setScriptTimeout(long,java.util.concurrent.TimeUnit)&quot;](java.lang.Long.valueOf(30), timeunit);&#xA;&#xA;try {&#xA;    // Load Google.com&#xA;    driver.get(url);&#xA;&#xA;    var screenshotTmpFile = driver.getScreenshotAs(Packages.org.openqa.selenium.OutputType.FILE);&#xA;&#xA;    var fis = new java.io.FileInputStream(screenshotTmpFile);&#xA;    try {&#xA;        var bis = new java.io.BufferedInputStream(fis);&#xA;        bytes = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, screenshotTmpFile.length());&#xA;&#xA;        for (var i = 0; i &lt; bytes.length; i++) {&#xA;           var b = new java.lang.Integer(bis.read());&#xA;           bytes[i] = b.byteValue();&#xA;        }&#xA;    } catch(e) {&#xA;        java.lang.System.out.println(e);&#xA;    } finally {&#xA;        fis.close();&#xA;    }&#xA;    java.lang.System.out.println(screenshotTmpFile + &quot; length &quot; + bytes.length);&#xA;} finally {&#xA;    driver.quit();&#xA;}&#xA;&#xA;result = bytes;" name="text"/>
                         <property value="JavaScript" name="engine"/>
                         <property value="19" name="auxiliary;wrapIn"/>
@@ -181,7 +181,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="javascriptPhantomJsClientScreenshot" entity-id="c07b045b-423b-49e0-9872-be071066022c">
+    <flow SubFlow="false" name="javascriptPhantomJsClientScreenshot" entity-id="188d801f-07f6-42f3-b4f2-3dfaebf3837c">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -203,24 +203,21 @@
             <pattern type="http://www.mulesoft.org/schema/mule/scripting/jsTransformer" name="Javascript" entity-id="Javascript#3">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="" name="returnClass"/>
+                    <property value="false" name="ignoreBadInput"/>
+                    <property value="importClass(Packages.com.espn.phantomjs.PhantomJs);&#xA;var phantomjs = new PhantomJs('/usr/local/bin/phantomjs', 60);&#xA;var bytes = phantomjs.screenshot(message.payload);&#xA;result = bytes;" name="text"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="mimeType"/>
                     <property value="23" name="auxiliary;index"/>
-                    <property name="mimeType"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-                        <property value="importClass(Packages.com.espn.phantomjs.PhantomJs);&#xA;var phantomjs = new PhantomJs('/usr/local/bin/phantomjs', 60);&#xA;var bytes = phantomjs.screenshot('http://espn.go.com');&#xA;result = bytes;" name="text"/>
-                        <property value="JavaScript" name="engine"/>
-                        <property value="24" name="auxiliary;wrapIn"/>
-                        <property value="24" name="auxiliary;index"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-                        <property value="importClass(Packages.com.espn.phantomjs.PhantomJs);&#xA;var phantomjs = new PhantomJs('/usr/local/bin/phantomjs', 60);&#xA;var bytes = phantomjs.screenshot('http://espn.go.com');&#xA;result = bytes;" name="text"/>
-                        <property value="JavaScript" name="engine"/>
-                        <property value="24" name="auxiliary;wrapIn"/>
+                    <property name="updated"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;1024796843">
+                        <property value="importClass(Packages.com.espn.phantomjs.PhantomJs);&#xA;var phantomjs = new PhantomJs('/usr/local/bin/phantomjs', 60);&#xA;var bytes = phantomjs.screenshot(message.payload);&#xA;result = bytes;" name="text"/>
                         <property value="24" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
+                <description></description>
             </pattern>
             <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/file/endpoint" name="write payload to file" entity-id="File#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
@@ -259,7 +256,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="cloudConnectorScreenshot" entity-id="518bc2aa-2cd1-47f9-8591-3622eca6c797">
+    <flow SubFlow="false" name="cloudConnectorScreenshot" entity-id="9b917778-dbd8-4969-b3f0-d5082480a53c">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -289,7 +286,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="cronscreenshot" entity-id="2435498b-400b-4b13-9d99-c9be5a8a6f93">
+    <flow SubFlow="false" name="cronscreenshot" entity-id="f56d304f-442c-4f58-910c-9456eb35b2b8">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -341,7 +338,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="bottomlineFlow1" entity-id="b89cfbc5-c8e4-4f55-9096-87038137fcf0">
+    <flow SubFlow="false" name="bottomlineFlow1" entity-id="2d420cf6-b53e-4bf5-9f3a-2bbec4caba31">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -367,7 +364,7 @@
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
-                    <property name="mimeType"/>
+                    <property value="image/png" name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
                     <property name="connector-ref"/>
@@ -383,20 +380,35 @@
             <splitter index="38" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property-collection name="3ae9b62e-f7a6-4373-9b1e-780b6109b7f8">
+                    <property value="38" name=";INDEX"/>
+                    <property-collection name="796df8f8-657e-47b1-a617-c42d6e60ef67">
                         <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="2e7282e4-f032-4cd1-abdf-c42cf49852d2">
+                    <property-collection name="73cad06d-3a17-4aca-926d-a1a6b9e00d71">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
                 </properties>
-                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2"/>
+                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
+                    <properties>
+                        <property value="38" name=";INDEX"/>
+                        <property-collection name="796df8f8-657e-47b1-a617-c42d6e60ef67">
+                            <property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['http.query.params']['url'] != null]" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="73cad06d-3a17-4aca-926d-a1a6b9e00d71">
+                            <property value="true" name="choice.otherwise"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                    </properties>
+                </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="40" hadOnlyOneElement="false" entity-id="3ae9b62e-f7a6-4373-9b1e-780b6109b7f8">
+                    <lane isChoiceOtherwiseLane="false" index="40" hadOnlyOneElement="false" entity-id="796df8f8-657e-47b1-a617-c42d6e60ef67">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="SetUrlPayloadFromQueryString" entity-id="Set Payload#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -405,7 +417,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="42" hadOnlyOneElement="false" entity-id="2e7282e4-f032-4cd1-abdf-c42cf49852d2">
+                    <lane isChoiceOtherwiseLane="true" index="42" hadOnlyOneElement="false" entity-id="73cad06d-3a17-4aca-926d-a1a6b9e00d71">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="setUrlPayload" entity-id="Set Payload#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -419,32 +431,67 @@
             <splitter index="43" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#3">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property-collection name="670d6d76-177a-45e1-bd82-fb23e18ba1b9">
-                        <property value="true" name="choice.otherwise"/>
-                        <property-collection name="choice.attributes"/>
-                    </property-collection>
-                    <property-collection name="866345c0-8fa6-4d6c-827b-1c959b1374c2">
+                    <property value="false" name="tracking:enable-default-events"/>
+                    <property name="updated"/>
+                    <property value="43" name=";INDEX"/>
+                    <property-collection name="85998203-29ba-4f3c-a4ec-25614435c30f">
                         <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="53a43804-465a-4e24-ab13-f1c39f74664d">
+                    <property-collection name="75c96d45-dac8-454c-b0b8-956139d554ab">
+                        <property value="#[message.inboundProperties['http.query.params']['springNoJs'] != null]" name="choice.expression"/>
+                        <property-collection name="choice.attributes">
+                            <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
+                        </property-collection>
+                    </property-collection>
+                    <property-collection name="2961a4de-0a71-499f-90a8-01e45d77b5ab">
                         <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="6d94c1be-f0be-4937-88fe-2cf8d502f89a">
-                        <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
-                        <property-collection name="choice.attributes">
-                            <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
-                        </property-collection>
+                    <property-collection name="a615d100-fc4e-4a91-ac28-0929e66b2d15">
+                        <property value="true" name="choice.otherwise"/>
+                        <property value="" name="choice.expression"/>
+                        <property-collection name="choice.attributes"/>
                     </property-collection>
                 </properties>
-                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#4"/>
+                <description></description>
+                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#4">
+                    <properties>
+                        <property value="false" name="tracking:enable-default-events"/>
+                        <property name="updated"/>
+                        <property value="43" name=";INDEX"/>
+                        <property-collection name="85998203-29ba-4f3c-a4ec-25614435c30f">
+                            <property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['http.query.params']['js'] != null]" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="75c96d45-dac8-454c-b0b8-956139d554ab">
+                            <property value="#[message.inboundProperties['http.query.params']['springNoJs'] != null]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="2961a4de-0a71-499f-90a8-01e45d77b5ab">
+                            <property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['http.query.params']['spring'] != null]" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="a615d100-fc4e-4a91-ac28-0929e66b2d15">
+                            <property value="true" name="choice.otherwise"/>
+                            <property value="" name="choice.expression"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                    </properties>
+                    <description></description>
+                </pattern>
                 <compartment entity-id="compartment#2">
-                    <lane isChoiceOtherwiseLane="false" index="45" hadOnlyOneElement="false" entity-id="866345c0-8fa6-4d6c-827b-1c959b1374c2">
+                    <lane isChoiceOtherwiseLane="false" index="45" hadOnlyOneElement="false" entity-id="85998203-29ba-4f3c-a4ec-25614435c30f">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="js" entity-id="Flow Reference#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -453,7 +500,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="47" hadOnlyOneElement="false" entity-id="53a43804-465a-4e24-ab13-f1c39f74664d">
+                    <lane isChoiceOtherwiseLane="false" index="47" hadOnlyOneElement="false" entity-id="2961a4de-0a71-499f-90a8-01e45d77b5ab">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="spring" entity-id="Flow Reference#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -462,7 +509,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="49" hadOnlyOneElement="false" entity-id="6d94c1be-f0be-4937-88fe-2cf8d502f89a">
+                    <lane isChoiceOtherwiseLane="false" index="49" hadOnlyOneElement="false" entity-id="75c96d45-dac8-454c-b0b8-956139d554ab">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="springNoJs" entity-id="Flow Reference#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -471,13 +518,15 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="51" hadOnlyOneElement="false" entity-id="670d6d76-177a-45e1-bd82-fb23e18ba1b9">
+                    <lane isChoiceOtherwiseLane="true" index="51" hadOnlyOneElement="false" entity-id="a615d100-fc4e-4a91-ac28-0929e66b2d15">
                         <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="cloudConnector" entity-id="Flow Reference#4">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="cloudConnectorScreenshot" name="name"/>
+<property value="javascriptPhantomJsClientScreenshot" name="name"/>
 <property value="51" name="auxiliary;index"/>
+<property name="updated"/>
                             </properties>
+                            <description></description>
                         </pattern>
                     </lane>
                 </compartment>

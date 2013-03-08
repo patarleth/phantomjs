@@ -1,3 +1,7 @@
 <!-- BEGIN_INCLUDE(phantomjs:screenshot) -->
     <phantomjs:screenshot url="#[map-payload:url]" />
 <!-- END_INCLUDE(phantomjs:screenshot) -->
+
+<!-- BEGIN_INCLUDE(phantomjs:execute-script) -->
+    <phantomjs:execute-script url="#[map-payload:url]" scriptSrc="#[map-payload:scriptSrc]" />
+<!-- END_INCLUDE(phantomjs:execute-script) -->
